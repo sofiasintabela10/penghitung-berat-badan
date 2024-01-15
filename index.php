@@ -8,6 +8,16 @@
 <body>
 
 <?php
+function classifyHeight($height) {
+    if ($height < 150) {
+        return "Short";
+    } elseif ($height >= 150 && $height <= 180) {
+        return "Average";
+    } else {
+        return "Tall";
+    }
+}
+
 // Inisialisasi variabel tinggi dengan nilai awal 0
 $tinggi = 0;
 
@@ -21,7 +31,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Masukkan tinggi badan dalam bentuk angka.";
     } else {
         // Menampilkan hasil penghitungan tinggi badan
-        echo "Tinggi Badan Anda: " . $tinggi . " cm";
+        echo "Tinggi Badan Anda: " . $tinggi . " cm<br>";
+        // Memanggil fungsi untuk mengklasifikasikan tinggi badan
+        echo "Klasifikasi: " . classifyHeight($tinggi);
     }
 }
 ?>
